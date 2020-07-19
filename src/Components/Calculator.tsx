@@ -17,13 +17,17 @@ const Calculator = () => {
     }
   };
 
+  const resetOutput = () => {
+    setOutput('0');
+  };
+
   return (
     <div className="container calc-container">
       <div className="row calc-output">
         <span>{output}</span>
       </div>
       <div className="row">
-        <button type="button" className="btn btn-light btn-one">AC</button>
+        <button type="button" className="btn btn-light btn-one" onClick={resetOutput}>AC</button>
         <button type="button" className="btn btn-light btn-one">+/-</button>
         <button type="button" className="btn btn-light btn-one">%</button>
         <button type="button" className="btn btn-primary btn-one">/</button>
