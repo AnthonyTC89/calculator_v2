@@ -1,4 +1,7 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import React, { useState } from 'react';
+import ButtonNumber from './ButtonNumber';
 import './Calculator.css';
 
 const Calculator = () => {
@@ -26,85 +29,25 @@ const Calculator = () => {
         <button type="button" className="btn btn-primary btn-one">/</button>
       </div>
       <div className="row">
-        <button
-          type="button"
-          onClick={() => addOutput('7')}
-          className="btn btn-dark btn-one"
-        >
-          7
-        </button>
-        <button
-          type="button"
-          onClick={() => addOutput('8')}
-          className="btn btn-dark btn-one"
-        >
-          8
-        </button>
-        <button
-          type="button"
-          onClick={() => addOutput('9')}
-          className="btn btn-dark btn-one"
-        >
-          9
-        </button>
+        <ButtonNumber number="7" addOutput={addOutput} />
+        <ButtonNumber number="8" addOutput={addOutput} />
+        <ButtonNumber number="9" addOutput={addOutput} />
         <button type="button" className="btn btn-primary btn-one">*</button>
       </div>
       <div className="row">
-        <button
-          type="button"
-          onClick={() => addOutput('4')}
-          className="btn btn-dark btn-one"
-        >
-          4
-        </button>
-        <button
-          type="button"
-          onClick={() => addOutput('5')}
-          className="btn btn-dark btn-one"
-        >
-          5
-        </button>
-        <button
-          type="button"
-          onClick={() => addOutput('6')}
-          className="btn btn-dark btn-one"
-        >
-          6
-        </button>
+        <ButtonNumber number="4" addOutput={addOutput} />
+        <ButtonNumber number="5" addOutput={addOutput} />
+        <ButtonNumber number="6" addOutput={addOutput} />
         <button type="button" className="btn btn-primary btn-one">-</button>
       </div>
       <div className="row">
-        <button
-          type="button"
-          onClick={() => addOutput('1')}
-          className="btn btn-dark btn-one"
-        >
-          1
-        </button>
-        <button
-          type="button"
-          onClick={() => addOutput('2')}
-          className="btn btn-dark btn-one"
-        >
-          2
-        </button>
-        <button
-          type="button"
-          onClick={() => addOutput('3')}
-          className="btn btn-dark btn-one"
-        >
-          3
-        </button>
+        <ButtonNumber number="1" addOutput={addOutput} />
+        <ButtonNumber number="2" addOutput={addOutput} />
+        <ButtonNumber number="3" addOutput={addOutput} />
         <button type="button" className="btn btn-primary btn-one">+</button>
       </div>
       <div className="row">
-        <button
-          type="button"
-          onClick={() => addOutput('0')}
-          className="btn btn-dark btn-two"
-        >
-          0
-        </button>
+        <ButtonNumber number="0" addOutput={addOutput} doubleSpace />
         <button
           type="button"
           onClick={() => addOutput('.')}
