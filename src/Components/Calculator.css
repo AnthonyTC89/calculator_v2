@@ -10,4 +10,10 @@
 .calc-output {
   width: 100%;
   justify-content: flex-end;
+  border: solid 0.1rem black;
+}
+
+.calc-text {
+  font-size: xx-large;
+  padding: 0 0.5rem;
 }

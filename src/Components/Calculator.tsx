@@ -30,7 +30,7 @@ const Calculator = () => {
   return (
     <div className="container calc-container">
       <div className="row calc-output">
-        <span>{output}</span>
+        <span className="calc-text">{output}</span>
       </div>
       <div className="row">
         <button type="button" className="btn btn-light btn-one" onClick={resetOutput}>AC</button>
