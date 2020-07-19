@@ -6,9 +6,10 @@ import './Calculator.css';
 
 const Calculator = () => {
   const [output, setOutput] = useState('0');
+  const [maxDigits, setMaxDigits] = useState(8);
 
   const addNumber = (text: string) => {
-    if (output.length < 8) {
+    if (output.length < maxDigits) {
       if (output === '0') {
         setOutput(text);
       } else {
@@ -18,13 +19,15 @@ const Calculator = () => {
   };
 
   const addPoint = (text: string) => {
-    if (output.length < 8 && !output.includes('.')) {
+    if (output.length < maxDigits && !output.includes('.')) {
       setOutput(output + text);
+      setMaxDigits(maxDigits + 1);
     }
   };
 
   const resetOutput = () => {
     setOutput('0');
+    setMaxDigits(8);
   };
 
   const handleSign = () => {
@@ -34,9 +37,20 @@ const Calculator = () => {
     const minus = '-';
     if (output.includes(minus)) {
       setOutput(output.replace(minus, ''));
+      setMaxDigits(maxDigits - 1);
     } else {
       setOutput(minus + output);
+      setMaxDigits(maxDigits + 1);
     }
+  };
+
+  const percentNumber = () => {
+    const number = parseFloat(output) / 100;
+    if (Math.abs(number) < 0.000001) {
+      setOutput('0');
+      return;
+    }
+    setOutput(number.toString().slice(0, maxDigits));
   };
 
   return (
@@ -47,7 +61,7 @@ const Calculator = () => {
       <div className="row">
         <button type="button" className="btn btn-light btn-one" onClick={resetOutput}>AC</button>
         <button type="button" className="btn btn-light btn-one" onClick={handleSign}>+/-</button>
-        <button type="button" className="btn btn-light btn-one">%</button>
+        <button type="button" className="btn btn-light btn-one" onClick={percentNumber}>%</button>
         <button type="button" className="btn btn-primary btn-one">/</button>
       </div>
       <div className="row">
