@@ -27,6 +27,18 @@ const Calculator = () => {
     setOutput('0');
   };
 
+  const handleSign = () => {
+    if (output === '0') {
+      return;
+    }
+    const minus = '-';
+    if (output.includes(minus)) {
+      setOutput(output.replace(minus, ''));
+    } else {
+      setOutput(minus + output);
+    }
+  };
+
   return (
     <div className="container calc-container">
       <div className="row calc-output">
@@ -34,7 +46,7 @@ const Calculator = () => {
       </div>
       <div className="row">
         <button type="button" className="btn btn-light btn-one" onClick={resetOutput}>AC</button>
-        <button type="button" className="btn btn-light btn-one">+/-</button>
+        <button type="button" className="btn btn-light btn-one" onClick={handleSign}>+/-</button>
         <button type="button" className="btn btn-light btn-one">%</button>
         <button type="button" className="btn btn-primary btn-one">/</button>
       </div>
