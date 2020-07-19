@@ -6,9 +6,10 @@ import ButtonOperator from './ButtonOperator';
 import './Calculator.css';
 
 const Calculator = () => {
-  // const [memNumber, setMenNumber] = useState(null);
+  const [memNumber, setMemNumber] = useState('');
   const [output, setOutput] = useState('0');
   const [maxDigits, setMaxDigits] = useState(8);
+  const [operator, setOperator] = useState('');
 
   const addNumber = (text: string) => {
     if (output.length < maxDigits) {
@@ -30,6 +31,8 @@ const Calculator = () => {
   const resetOutput = () => {
     setOutput('0');
     setMaxDigits(8);
+    setOperator('');
+    setMemNumber('');
   };
 
   const handleSign = () => {
@@ -55,13 +58,17 @@ const Calculator = () => {
     setOutput(number.toString().slice(0, maxDigits));
   };
 
-  const handleOperation = (operator: string) => {
-    window.alert(operator);
+  const handleOperation = (op: string) => {
+    setOperator(op);
+    setMemNumber(output);
+    setOutput('0');
+    setMaxDigits(8);
   };
 
   return (
     <div className="container calc-container">
       <div className="row calc-output">
+        <small className="calc-memory">{`${memNumber} ${operator}`}</small>
         <span className="calc-text">{output}</span>
       </div>
       <div className="row">

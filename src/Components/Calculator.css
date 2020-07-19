@@ -9,11 +9,18 @@
 
 .calc-output {
   width: 100%;
+  text-align: right;
   justify-content: flex-end;
+  flex-direction: column;
   border: solid 0.1rem black;
 }
 
 .calc-text {
   font-size: xx-large;
   padding: 0 0.5rem;
+}
+
+.calc-memory {
+  font-size: small;
+  padding: 0 1rem;
 }
