@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './ButtonNumber.css';
+import './Button.css';
 
 const ButtonOperator = ({ operator, handleOperation }) => (
   <button

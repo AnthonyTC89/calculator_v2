@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import ButtonNumber from './ButtonNumber';
 import ButtonOperator from './ButtonOperator';
@@ -28,7 +26,7 @@ const Calculator = () => {
     }
   };
 
-  const resetOutput = () => {
+  const resetCalculator = () => {
     setOutput('0');
     setMaxDigits(8);
     setOperator('');
@@ -65,6 +63,38 @@ const Calculator = () => {
     setMaxDigits(8);
   };
 
+  const handleEqual = () => {
+    let result = 0;
+    switch (operator) {
+      case '+':
+        result = parseFloat(memNumber) + parseFloat(output);
+        break;
+      case '-':
+        result = parseFloat(memNumber) - parseFloat(output);
+        break;
+      case '*':
+        result = parseFloat(memNumber) * parseFloat(output);
+        break;
+      case '/':
+        if (parseFloat(output) === 0) {
+          result = 0;
+        } else {
+          result = parseFloat(memNumber) / parseFloat(output);
+        }
+        break;
+      default:
+        break;
+    }
+    resetCalculator();
+    if (result > 99999999) {
+      setOutput('99999999');
+    } else if (result < -99999999) {
+      setOutput('-99999999');
+    } else {
+      setOutput(result.toString().slice(0, maxDigits));
+    }
+  };
+
   return (
     <div className="container calc-container">
       <div className="row calc-output">
@@ -72,7 +102,7 @@ const Calculator = () => {
         <span className="calc-text">{output}</span>
       </div>
       <div className="row">
-        <button type="button" className="btn btn-light btn-one" onClick={resetOutput}>AC</button>
+        <button type="button" className="btn btn-light btn-one" onClick={resetCalculator}>AC</button>
         <button type="button" className="btn btn-light btn-one" onClick={handleSign}>+/-</button>
         <button type="button" className="btn btn-light btn-one" onClick={percentNumber}>%</button>
         <ButtonOperator operator="/" handleOperation={handleOperation} />
@@ -98,7 +128,7 @@ const Calculator = () => {
       <div className="row">
         <ButtonNumber number="0" addOutput={addNumber} doubleSpace />
         <ButtonNumber number="." addOutput={addPoint} />
-        <button type="button" className="btn btn-success btn-one">=</button>
+        <button type="button" className="btn btn-success btn-one" onClick={handleEqual}>=</button>
       </div>
     </div>
   );
